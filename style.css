@@ -1,0 +1,72 @@
+.btn-welcome-up {
+    position: absolute;
+    top:50%;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  }
+  .btn-welcome-up:hover {
+    background-color:#002ead;
+    transition: 0.7s;
+}
+/* //////////// NAVIGATION ///////// */
+
+.topnav {
+     background-color: none;
+     overflow: hidden;
+     list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	align-items: center;
+	display: flex;
+	text-align: center;
+	justify-content: space-around;
+    }
+    
+
+    /* Style the links inside the navigation bar */
+    
+    .topnav a {
+     float: left;
+     color: #f2f2f2;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-size: 17px;
+    }
+    
+    
+    
+    /* Change the color of links on hover */
+    .topnav a:hover {
+     background-color: none;
+     color: purple;
+    }
+    
+    
+    
+    
+    /* Add a color to the active/current link */
+    .topnav a.active {
+     background-color: none;
+     color: white;
+    }
+
+    /* ////////////////////////////////////////// FOOTER ////////////////////////////////////////////// */
+
+  footer {
+     position: fixed;
+     bottom: 0;
+     width: 100%; 
+     height: 40px;    
+     text-align: center;   
+     padding: 5px;   
+     background-color: none;
+     color: #f1fffa;
+    
+    }
