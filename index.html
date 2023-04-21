@@ -1,228 +1,273 @@
 <!DOCTYPE html>
-<html> 
+<html lang="en"> 
     <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <style>
             /* Set the background image */
             body {
                 background-image: url('https://usagif.com/wp-content/uploads/gif/outerspace-6.gif');
                 background-size: cover;
+                font-family: Arial, Helvetica, sans-serif;
+                display: flex;
+                flex-direction: column;
                 background-position: center;
                 background-repeat: no-repeat;
+                align-items: center;
                 height: 100vh; 
                 margin: 0; /* Remove default margin */
             }
+            * {box-sizing: border-box;}
+            canvas { border: 1px solid black; }  
             
-        </style>
-    </head>
+            .input-container {
+              display: -ms-flexbox; /* IE10 */
+              display: flex;
+              margin-bottom: 15px;
+            }
 
-    <body>
-        <header><img src="CI2SolarSystem.webp" height="150" width="100%"></header>
-        <nav class="topnav">
-            <a class="active" id="welcome_a">WELCOME</a>
-            <a id="signning_a">SIGN IN</a>
+            .icon {
+              padding: 10px;
+              background: #0a0a23;
+              color: white;
+              min-width: 50px;
+              text-align: center;
+            }
+
+            .input-field {
+              padding: 10px;
+              outline: none;
+            }
+
+            .input-field:focus {
+              border: 2px solid #0a0a23;
+            }
+
+            /* Set a style for the submit button */
+            .btn {
+              background-color: #0a0a23;
+              color: white;
+              font-family: fantasy;
+              font-size: 20px;
+              padding: 15px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;
+            }
+            .btn1 {
+              background-color: #0a0a23;
+              color: white;
+              font-family: fantasy;
+              font-size: 20px;
+              padding: 15px 20px;
+              border: none;
+              cursor: pointer;
+              width: 200px;
+              opacity: 0.9;
+              border-radius:10px; 
+              padding:15px;
+            }
+
+            .btn:hover {
+              opacity: 1;
+            }
+            .btn1:hover {
+              opacity: 1;
+            }
+          </style>
+      </head>
+      <body>
+        <header><img
+          src="media/photos/logo.webp"
+          alt="Logo!" id="logo"
+          height="150" width="300"
+        /><img src="media\photos\CI2SolarSystem.webp" id="top_photo" height="150" width="1200"></header>
+        <nav id="bar" class="topnav">
+          <div id="welcome_div">
+            <a class="active" id="welcome_a"></a>
+            <a href="#" id="welcome">WELCOME</a>
+            <a href="#" id="signning_a">SIGN IN</a>
             <a id="logging_a">LOG IN</a>
-            <a id="about_a">ABOUT</a>
-            <a
-              id="game_a"
-              class="inactiveLink"
-              >START GAME!</a
-            >
-          </nav>
+            <a href="#" id="about_a" >ABOUT</a>
+            <a id="game_a" class="inactiveLink">START GAME!</a>
+          </div>
+        </nav>
           
     <!-- Content-->
     <div id="content">
-        <div id="welcome_div">
-          <img
-            src="resources/welcome.png"
-            alt="Logo!"
-            style="height: 150px"
-          /><br />
+         <br/><br/><br/>
           <button id="signup-btn" class="btn-welcome-up" role="button">
             <!-- onclick="moveSignUp()" -->
             SIGN UP
           </button>
-          <button id="login-btn" class="btn-welcome-in">
+          <button id="login-btn" class="btn-welcome-up">
             <!--onclick="moveSignIn()" -->
             LOGIN
           </button>
-        </div>
-
-        <div id="welcome_div-logged-in" class="hide">
-            <img
-              src="resources/welcome.png"
-              alt="Logo!"
-              style="height: 150px"
-            /><br />
+    </div>
+          <div id="welcome_div-logged-in" class="hide">
             <h1 id="logged_in_welcome" style="color: black"></h1>
-            <button id="logout-btn" class="btn-welcome-in">
+            <button id="newGame-btn" class="btn-welcome-up" style="font-size:41px;min-width: 130px; position: fixed; right: 20px; bottom: 120px;">
+              <!--onclick="moveSignIn()" -->
+              New Game
+            </button>
+          </div>
+        <br/>
+        <div id="welcome_div-logged-in" class="hide">
+            <h1 id="logged_in_welcome" style="color: black"></h1>
+            <button id="logout-btn" class="btn-welcome-up" style="font-size:50px;min-width: 200px; position: fixed; right: 20px; bottom: 20px;">
               <!--onclick="moveSignIn()" -->
               LOGOUT
             </button>
-          </div>
+        </div>
 
-        <div class="hide" id="sigging_div">
+
+      <div id="settings_div" class="hide">
+        
+        <i class="fa fa-rocket icon"></i>
+        <input id="form_key" class="input-field" type="text" placeholder="Press the key for shooting" name="key">
+          <h5 id="keycheck" style="color: red ">
+            Choose one char ONLY!
+          </h5>
+          <br/><br/>
+          <i class="fa fa-hourglass-1 icon"></i>
+          <input id="game_timer_picker"  class="input-field" type="text" placeholder="Game timer (sec):" name="timer">
+          <h5 id="time_settings_error_message" style="color: red">
+            Time cant be less than 120 secs!
+          </h5>
+          <br/><br/>
+          <button id="play-btn" class="btn-welcome-up">
+            SAVE THE WORLD!
+          </button>
+      </div>
+      
+      <div class="hide" id="sigging_div">
             <div class="container">
               <form>
-                <label for="username">User Name</label>
-                <input
-                  type="text"
-                  id="form_username"
-                  name="username"
-                  placeholder="Enter your name"
-                />
+                <i class="fa fa-user icon"></i>
+                <input id="form_username" class="input-field" type="text" placeholder="Enter your name" name="username">
                 <h5 id="usernamecheck" style="color: red">
                   Username must not be empty!
                 </h5>
-                <br /><br />
-    
-                <label for="pass">Password</label><br />
-                <input
-                  type="password"
-                  id="form_pass"
-                  name="pass"
-                  placeholder="Enter your password"
-                />
+                <br/><br/>
+                <i class="fa fa-unlock-alt icon"></i>
+                <input id="form_pass" class="input-field" type="password" placeholder="Enter your password" name="pass">
                 <h5 id="passcheck" style="color: red">
                   Please Fill the password in len of at least 8 and include chars and numbers!
                 </h5>
-                <br /><br />
+                <br/><br/>
     
-                <label for="conf_pass">Validate Password</label><br />
-                <input
-                  type="password"
-                  id="form_conf_pass"
-                  name="conf_pass"
-                  placeholder="Write your password again"
-                />
+                <i class="fa fa-unlock-alt icon"></i>
+                <input id="form_conf_pass" class="input-field" type="password" placeholder="Write your password again" name="conf_pass">
                 <h5 id="confpasscheck" style="color: red">
                   Password didn't match!
                 </h5>
-                <br /><br />
+                <br/><br/>
     
-                <label for="first_name">First Name</label>
-                <input
-                  type="text"
-                  id="form_first_name"
-                  name="name"
-                  placeholder="Enter your first name"
-                />
+                <i class="fa fa-child icon"></i>
+                <input id="form_first_name" class="input-field" type="text" placeholder="Enter your first name" name="name">
                 <h5 id="firstnamecheck" style="color: red">
                   First name must not be empty!
                 </h5>
-                <br /><br />
+                <h5 id="firstnamenumcheck" style="color: red">
+                  First name cant include digits!
+                </h5>
+                <br/><br/>
 
-                <label for="last_name">Last Name</label>
-                <input
-                  type="text"
-                  id="form_last_name"
-                  name="name"
-                  placeholder="Enter your last name"
-                />
+                <i class="fa fa-users icon"></i>
+                <input id="form_last_name" class="input-field" type="text" placeholder="Enter your last name" name="name">
                 <h5 id="lastnamecheck" style="color: red">
                   Last name must not be empty!
                 </h5>
-                <br /><br />
+                <h5 id="lastnamenumcheck" style="color: red">
+                  Last name cant include digits!
+                </h5>
+                <br/><br/>
     
-                <label for="email">Email</label>
-                <input
-                  type="text"
-                  id="form_email"
-                  name="email"
-                  placeholder="Enter your name"
-                />
+                <i class="fa fa-envelope icon"></i>
+                <input id="form_email" class="input-field" type="text" placeholder="Enter your email" name="email">
                 <h5 id="confemail" style="color: red">
                   Your email address is not valid!
                 </h5>
-                <br /><br />
+                <br/><br/>
     
-                <label for="birthdate">Date of Birth</label><br />
-                <input
-                  type="date"
-                  id="form_birthdate"
-                  name="birthdate"
-                  value="1995-01-01"
-                  min="1900-01-01"
-                  max="2023-05-01"
-                  placeholder="Your Date of Birth.."
-                /><br /><br />
-    
-                <input type="submit" value="submit" id="btn_submit" />
+                <i class="fa fa-calendar icon"></i>
+                <input id="form_birthdate" class="input-field" type="date" placeholder="Your Date of Birth.." value="1995-01-01" min="1900-01-01" max="2023-05-01" name="birthdate">
+                <br/><br/>
+                <button type="submit" value="submit" id="btn_submit"class="btn">SUBMIT</button>
               </form>
             </div>
+        </div>
+
+
+        <form action="/action_page.php" style="max-width:500px;margin:auto"id="logging_div" class="hide">
+          <h5 id="form_login_error_message" style="color: red">
+            User or password not correct! Try again!
+          </h5>
+          <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input id="username" class="input-field" type="text" placeholder="Username" name="usrnm">
+            <h5 id="form_login_username" style="color: red">
+              Username must not be empty!
+            </h5>
           </div>
+          
+          <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input id="password-log" class="input-field" type="password" placeholder="Password" name="psw">
+            <h5 id="form_login_passcheck" style="color: red">
+              Fill the password
+              </h5>
+          </div>
+        
+          <button type="submit" id="checkLogin-btn" class="btn">Login</button>
+        </form>
+
+        <table>
+          <thead id="table">
+            <tr>
+              <th>Time</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="scoreTableBody">
+            <!-- Table body will be populated dynamically using JavaScript -->
+          </tbody>
+        </table>
+
+        <button type="submit" id="scores-btn" class="btn1" style="font-size:50px;min-width: 100px; position: fixed; right: 20px; bottom: 220px;">To Scores Table</button>
 
 
-          <div class="hide" id="logging_div">
-            <div class="container">
-              <form>
-                <h5 id="form_login_error_message" style="color: red">
-                  User or password not correct! Try again!
-                </h5>
-                <br />
-                <!-- action="action_page.php" -->
-                <label for="form_login_username">User Name</label>
-                <input
-                  type="text"
-                  id="form_login_username"
-                  name="form_login_username"
-                  placeholder="Enter your username"
-                />
-                <h5 id="form_login_usernamecheck" style="color: red">
-                  Username must not be empty!
-                </h5>
-                <br /><br />
-    
-                <label for="form_login_pass">Password</label><br />
-                <input
-                  type="password"
-                  id="form_login_pass"
-                  name="form_login_pass"
-                  placeholder="Enter your password"
-                />
-                <h5 id="form_login_passcheck" style="color: red">
-                Fill the password
-                </h5>
-                <br /><br />
-    
-                <input type="submit" value="Login" id="checkLogin-btn" />
-              </form>
+            <!-- HTML content for the About Dialog -->
+            <div id="about-dialog" class="modal">
+              <div class="modal-content">
+                <button id="close-btn">X</button>
+                <h2>WELCOME TO CHICKEN INVADERS!</h2>
+                <p>Your Goal: Killing all the chickens on the screen. A chicken from the first row worth 5, second row 10, etc.</p>
+                <p>Be carefull of the fried eggs!! You have 3 lives so don't waste them!</p>
+                <p>After logging, in the setting page, you are able to choose a key for shooting and desired gaming time.</p>
+                <p>Be aware that diagonal movement is available by pressing both key in the desired direction.</p>
+                <p>More over, Chickens and fried eggs moving diagonally, as well as your shooting bullets! Cool!</p>
+                <p>In the top of the game screen you can find countdown timer, scores counter and remaining lives counter.</p>
+                <p>Author: Eden and Sapir</p>
+                <p>Enjoy Your mission and Save The World! (And our grade).</p>
+              </div>
             </div>
-
-            <dialog id="about_dialog">
-                <button id="close" onclick="closedialog()" style="height: 40px; width: 25px; margin-right: 40%">X</button>
             <br/>
-
-            </dialog> 
             <div id="game_div" class="hide"></div>
           </div>
 
-
-
-
-
-
-
-<footer>
-<p>
-Creators: Eden Luzon & Sapir Sharabi<br />
-
-</p>
- </footer>
-
-          
-          <script src="./chickenGame.js"></script>
+          <canvas id = "theCanvas" style="position: absolute;" ></canvas> 
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <footer class="footer">
+          <p>Creators: Eden Luzon & Sapir Sharabi Contact us - sapsh@post.bgu.ac.il</p>
+          </footer>
+          <script type="module" src="./chickenGame.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         </div>
     </body>
-
-
-
-
-
-
-
-
-
-
 </html>

@@ -1,43 +1,68 @@
 .btn-welcome-up {
-    position: absolute;
-    top:50%;
     background-color:#0a0a23;
+    font-family: fantasy;
+    font-size: 80px;
     color: #fff;
     border:none; 
     border-radius:10px; 
     padding:15px;
-    min-height:30px; 
-    min-width: 120px;
+    min-width: 280px;
   }
   .btn-welcome-up:hover {
     background-color:#002ead;
     transition: 0.7s;
 }
+
+
+
+
+
+
 /* //////////// NAVIGATION ///////// */
 
 .topnav {
-     background-color: none;
-     overflow: hidden;
-     list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	align-items: center;
-	display: flex;
-	text-align: center;
-	justify-content: space-around;
+  font-family: fantasy;
     }
-    
 
+  h5{
+    font-family: calibri;
+    font-size: 20px;
+    background-color: white;
+  }
+
+    /* CSS for the About Dialog */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.modal-content {
+  background: linear-gradient(45deg,#89608E,#4F759B );
+  width: 500px;
+  font-family: fantasy;
+  font-size: 18px;
+  padding: 20px;
+  margin: 100px auto;
+  border-radius: 5px;
+}
+
+
+    #close-btn {
+      margin-top: 10px;
+    }
     /* Style the links inside the navigation bar */
     
     .topnav a {
-     float: left;
      color: #f2f2f2;
      text-align: center;
      padding: 14px 16px;
      text-decoration: none;
-     font-size: 17px;
+     font-size:40px;
     }
     
     
@@ -59,14 +84,35 @@
 
     /* ////////////////////////////////////////// FOOTER ////////////////////////////////////////////// */
 
-  footer {
-     position: fixed;
-     bottom: 0;
-     width: 100%; 
-     height: 40px;    
-     text-align: center;   
-     padding: 5px;   
-     background-color: none;
-     color: #f1fffa;
+  .footer {
+    font-size: 20px;
+    font-family: fantasy;
+     color: white;
     
     }
+
+
+    table {
+      border-collapse: collapse;
+      width: 100;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+      background-color: #f2f2f2
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+
+
+
+
+
+
+
+
+
+
+    
