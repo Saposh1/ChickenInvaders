@@ -45,6 +45,10 @@ document.getElementById('close-btn').addEventListener('click', function() {
   document.getElementById('about-dialog').style.display = 'none';
 });
 document.getElementById('logging_a').addEventListener('click',function() {
+  if(currUser!=null){
+    alert("YOU ARE ALREADY LOGGED IN! ");
+    return;
+  }
   $("#content").hide();
   $("#sigging_div").hide(); 
   $("#logging_div").show();
@@ -55,12 +59,14 @@ document.getElementById('welcome').addEventListener('click',function() {
   $("#logging_div").hide();
 }); 
 document.getElementById('signning_a').addEventListener('click',function() {
+  if(currUser!=null){
+    alert("YOU ARE ALREADY SIGNED IN! ");
+    return;
+  }
   $("#content").hide();
   $("#logging_div").hide(); 
   $("#sigging_div").show();
 }); 
-document.getElementById( "game_a" ).addEventListener( 
-  "click", newGame, false );
 
   /* Game Variables */
 const canvas = document.getElementById("theCanvas");
@@ -538,7 +544,12 @@ btn_signUp.addEventListener("click", function () {
 
   // /* ////////////////////////////////  SETTINGS ////////////////////////////////// */
   function settings(){
+    document.getElementById(
+      "event_status"
+    ).innerHTML ="";
     stopTimer();
+    $("#table").hide();
+    $("#scoreTableBody").hide();
     $("#newGame-btn").hide();
     mainGameSound.pause();
     $("#settings_div").show();
@@ -547,15 +558,23 @@ btn_signUp.addEventListener("click", function () {
     $("#time_settings_error_message").hide();
 
 
-    document.getElementById("form_key").addEventListener('keydown', function(event) {
-      // Get the key code or key value of the pressed key
-      var key = event.code;
-    if(keyError === true){  
-      $("#keycheck").hide()
-      player.setkey(key);
-      keyError = false;
+    document.getElementById("form_key").addEventListener("keydown", onKeyPress);
+    function onKeyPress(event) {
+      document.getElementById(
+        "event_status"
+      ).innerHTML = `<b>keypress: </b> ${event.key} &nbsp; <b>keyCode: </b> ${event.code}  <br>`;
+      player.setkey(event.code);
     }
-    else{$("#keycheck").show();}});
+
+    // document.getElementById("form_key").addEventListener('keydown', function(event) {
+    //   // Get the key code or key value of the pressed key
+    //   var key = event.code;
+    // if(keyError === true){  
+    //   $("#keycheck").hide()
+    //   player.setkey(key);
+    //   keyError = false;
+    // }
+    // else{$("#keycheck").show();}});
 
     document.getElementById("play-btn").addEventListener("click", function () {
       var keyValue = document.getElementById("form_key").value;

@@ -90,16 +90,15 @@
           <div id="welcome_div">
             <a class="active" id="welcome_a"></a>
             <a href="#" id="welcome">WELCOME</a>
-            <a href="#" id="signning_a">SIGN IN</a>
+            <a href="#" id="signning_a">SIGN UP</a>
             <a id="logging_a">LOG IN</a>
             <a href="#" id="about_a" >ABOUT</a>
-            <a id="game_a" class="inactiveLink">START GAME!</a>
           </div>
         </nav>
           
     <!-- Content-->
     <div id="content">
-         <br/><br/><br/>
+         <br/>
           <button id="signup-btn" class="btn-welcome-up" role="button">
             <!-- onclick="moveSignUp()" -->
             SIGN UP
@@ -126,10 +125,11 @@
         </div>
 
 
-      <div id="settings_div" class="hide">
+      <div id="settings_div" class="hide" style="border: 5px solid white;background-color:#0B2447;border-radius:10px;padding: 10px;">
         
         <i class="fa fa-rocket icon"></i>
         <input id="form_key" class="input-field" type="text" placeholder="Press the key for shooting" name="key">
+        <p id="event_status"></p>
           <h5 id="keycheck" style="color: red ">
             Choose one char ONLY!
           </h5>
@@ -145,7 +145,7 @@
           </button>
       </div>
       
-      <div class="hide" id="sigging_div">
+      <div class="hide" id="sigging_div"style="border: 5px solid white;background-color:#0B2447;border-radius:10px;padding: 10px;">
             <div class="container">
               <form>
                 <i class="fa fa-user icon"></i>
@@ -204,7 +204,7 @@
         </div>
 
 
-        <form action="/action_page.php" style="max-width:500px;margin:auto"id="logging_div" class="hide">
+        <form action="/action_page.php" style="max-width:500px;margin:auto;border: 5px solid white;background-color:#0B2447;border-radius:10px;padding: 10px;"id="logging_div" class="hide">
           <h5 id="form_login_error_message" style="color: red">
             User or password not correct! Try again!
           </h5>
@@ -264,7 +264,7 @@
 
           <canvas id = "theCanvas" style="position: absolute;" ></canvas> 
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <footer class="footer">
+          <footer class="footer" style="position: absolute;top:91%;left:2%;">
           <p>Creators: Eden Luzon & Sapir Sharabi Contact us - sapsh@post.bgu.ac.il</p>
           </footer>
           <script type="module" src="./chickenGame.js"></script>
