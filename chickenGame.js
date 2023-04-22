@@ -218,6 +218,7 @@ function populateScoreTable() {
   // Loop through the player scores and create a table row for each player
   for (var idx = 0; idx < playerScores.length; idx++) {
     var date = playerScores[idx].date;
+    var time =playerScores[idx].time;
     var score = playerScores[idx].score;
 
     // Create a new row in the table
@@ -227,6 +228,10 @@ function populateScoreTable() {
     var playerCell = document.createElement('td');
     playerCell.textContent = date;
     row.appendChild(playerCell);
+
+    var timeCell = document.createElement('td');
+    timeCell.textContent = time;
+    row.appendChild(timeCell);
 
     var scoreCell = document.createElement('td');
     scoreCell.textContent = score;
@@ -257,7 +262,8 @@ function displayGameOver() {
       text="You Can Do Better! Your Score: "+points;
     }
     var curDate=new Date();
-    playerScores.push({date:curDate,score:points})
+    playerScores.push({date:curDate.toLocaleDateString(),time:curDate.getHours() + ":" 
+    + curDate.getMinutes() + ":" + curDate.getSeconds(),score:points})
     gameOverSound.play();
     ctx.fillStyle = "white";
     ctx.font = "40px Arial";
