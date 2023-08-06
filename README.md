@@ -1,10 +1,11 @@
-As part of web development Enviroment course, we developed the chicken invaders game. Hope you will enjoy it! 
+# Chicken Invaders Web Game
 
-id1: 316608942
-id2: 208381814
+As part of Web Development Enviroment course, we developed the chicken invaders game. Hope you will enjoy it! 
 
 url - https://web-development-environments-2023.github.io/assignment2-208381814_316608942/
 
 
+https://github.com/Saposh1/ChickenInvaders/assets/103626425/ac3bf84f-a10b-4ea5-b3da-118cfcf52d6d
 
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10772197&assignment_repo_type=AssignmentRepo)
+
+
